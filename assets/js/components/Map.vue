@@ -3,6 +3,9 @@
     <GmapMap @click="checkWeather"
         :center="startingPosition"
         :zoom="10"
+        :options="{
+          fullscreenControl: false
+        }"
         map-type-id="terrain"
         style="width: 100%; height: 500px"
     >
