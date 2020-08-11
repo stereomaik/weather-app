@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}Simple Weather Checker{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/build/map.css') }}">
+{% endblock %}
 {% block body %}
-    elo
+    <div id="map"></div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('map') }}
 {% endblock %}

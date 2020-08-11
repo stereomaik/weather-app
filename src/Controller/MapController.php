@@ -100,9 +100,10 @@ class MapController extends AbstractController
      */
     public function getWeather(Request $request, HttpClientInterface $client)
     {
+        $requestData = json_decode($request->getContent(), true);
         $coordinates = $this->getValidatedLatitudeAndLongitude(
-            $request->get('longitude'),
-            $request->get('latitude')
+            $requestData['longitude'],
+            $requestData['latitude']
         );
 
         if (!$coordinates) {
