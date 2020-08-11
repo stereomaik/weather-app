@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block title %}Simple Weather Checker{% endblock %}
+{% block body %}
+{% if checks|length %}
+	<div class="row">
+		<div class="col">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>Total checks</th>
+					<th>Top city</th>
+					<th>Max temperature</th>
+					<th>Min temperature</th>
+					<th>Average temperature</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ checks.getTotalItemCount }}</td>
+						<td>{{ topCity.city }}</td>
+						<td>{{ temperatureStats.max }}&deg;C</td>
+						<td>{{ temperatureStats.min }}&deg;C</td>
+						<td>{{ temperatureStats.average|number_format(2) }}&deg;C</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>City</th>
+					<th>Longitude</th>
+					<th>Latitude</th>
+					<th>Temperature</th>
+					<th>Clouds</th>
+					<th>Wind Speed</th>
+					<th>Description</th>
+					<th>Searched</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for check in checks %}
+					<tr>
+						<td>{{ check.id }}</td>
+						<td>{{ check.city }}</td>
+						<td>{{ check.latitude }}</td>
+						<td>{{ check.longitude }}</td>
+						<td>{{ check.temperature }}&deg;C</td>
+						<td>{{ check.clouds }}%</td>
+						<td>{{ check.windSpeed }}m/s</td>
+						<td>{{ check.description }}</td>
+						<td>{{ check.createdAt|date('Y-m-d H:i:s') }}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% else %}
+	<div class="row">
+	<div class="col">
+		<div class="alert alert-info">There were no weather checks yet.</div>
+	</div>
+</div>
+{% endif %}
+<div class="row">
+	<div class="col">
+		<div class="navigation">
+			{{ knp_pagination_render(checks) }}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    #with sprintf format for easy completion
+    open_weather_api: 'https://api.openweathermap.org/data/2.5/weather?lat=%%s&lon=%%s&units=metric&appid=%%s'
+    open_weather_api_key: '%env(OPEN_WEATHER_API_KEY)%'
 
 services:
     # default configuration for services in *this* file

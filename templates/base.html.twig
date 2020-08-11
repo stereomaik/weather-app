@@ -3,10 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <style>
+            body {
+                padding-top: 5rem;
+            }
+        </style>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{{ path('map_homepage') }}">Weather App</a>
+
+        <div class="navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('map_homepage') }}">Check <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('map_history') }}">History</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
         {% block body %}{% endblock %}
+    </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
